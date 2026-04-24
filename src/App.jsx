@@ -62,6 +62,10 @@ function App() {
 
   return (
     <div className="container">
+      <div className="disclaimer">
+        <strong>Demo only.</strong> This tool is not an official Salesforce product, is not supported by Salesforce, and does not represent actual pricing, performance guarantees, or ROI commitments. All figures are illustrative estimates for discussion purposes only.
+      </div>
+
       <div className="hero-header">
         <h1>Agentic Enterprise Services ROI Calculator</h1>
         <p className="subtitle">

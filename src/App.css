@@ -67,6 +67,21 @@
   margin-bottom: 1.5rem;
 }
 
+.disclaimer {
+  background: #fffbeb;
+  border: 1px solid #f59e0b;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  font-size: 0.82rem;
+  color: #92400e;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.disclaimer strong {
+  color: #78350f;
+}
+
 .hero-header {
   text-align: center;
   margin-bottom: 2rem;
