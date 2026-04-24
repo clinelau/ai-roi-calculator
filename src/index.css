@@ -1,0 +1,28 @@
+/* CSS variables — define our color palette and font in one place */
+:root {
+  --blue: #4f46e5;
+  --blue-dark: #4338ca;
+  --green: #059669;
+  --bg: #f8fafc;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --text-muted: #64748b;
+  --border: #e2e8f0;
+  --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+}
+
+/* Reset browser defaults — every browser adds its own margins/padding by
+   default, which causes inconsistent layouts. We zero them out here. */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+}
