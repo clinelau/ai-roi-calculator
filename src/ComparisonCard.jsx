@@ -41,7 +41,7 @@ function ComparisonCard({ without, withPS, packageName, packageId }) {
             <div className="ct-val with-col">${withPS.year1Value.toLocaleString()}</div>
           </div>
           <div className="ct-row ct-row-net">
-            <div className="ct-label">Net return</div>
+            <div className="ct-label">Year 1 net return</div>
             <div className={`ct-val without-col ${without.year1Net < 0 ? 'negative' : 'positive'}`}>
               {without.year1Net < 0 ? '−' : '+'}${Math.abs(without.year1Net).toLocaleString()}
             </div>
@@ -55,8 +55,8 @@ function ComparisonCard({ without, withPS, packageName, packageId }) {
           <div className="ct-group-label">3-Year Summary</div>
           <div className="ct-row ct-row-net">
             <div className="ct-label">
-              Cumulative net return
-              <span className="ct-sublabel">Years 2–3 use license cost only; PS fee is year 1 only</span>
+              3-year total net return
+              <span className="ct-sublabel">Sum of (value − cost) across all 3 years. PS fee only in Year 1; Years 2–3 deduct license cost only.</span>
             </div>
             <div className={`ct-val without-col ${without.threeYearNet < 0 ? 'negative' : 'positive'}`}>
               {without.threeYearNet < 0 ? '−' : '+'}${Math.abs(without.threeYearNet).toLocaleString()}
@@ -66,7 +66,10 @@ function ComparisonCard({ without, withPS, packageName, packageId }) {
             </div>
           </div>
           <div className="ct-row">
-            <div className="ct-label">Break-even</div>
+            <div className="ct-label">
+              Break-even month
+              <span className="ct-sublabel">Month when cumulative value generated covers total Year 1 investment</span>
+            </div>
             <div className="ct-val without-col">{without.breakEven}</div>
             <div className="ct-val with-col">{withPS.breakEven}</div>
           </div>

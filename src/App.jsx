@@ -21,9 +21,19 @@ function calcScenario(hourlyRate, hoursPerWeek, numEmployees, annualLicenseCost,
   const year1Net = year1Value - year1Investment
   const threeYearNet = year1Net + (year2Value - ongoingInvestment) + (year3Value - ongoingInvestment)
 
-  const monthlyValue = grossAnnualValue / 12
-  const totalInvestment = year1Investment
-  const breakEvenMonths = monthlyValue > 0 ? Math.ceil(totalInvestment / monthlyValue) : null
+  // Break-even uses ramped Year 1 monthly value, then full value for Year 2+.
+  // Using un-ramped grossAnnualValue would overstate how fast value accrues in Year 1.
+  let breakEvenMonths = null
+  const monthlyYear1Value = year1Value / 12
+  const monthlyFullValue = grossAnnualValue / 12
+  if (monthlyYear1Value > 0) {
+    if (year1Value >= year1Investment) {
+      breakEvenMonths = Math.ceil(year1Investment / monthlyYear1Value)
+    } else if (monthlyFullValue > 0) {
+      const remainingAfterYear1 = year1Investment - year1Value
+      breakEvenMonths = 12 + Math.ceil(remainingAfterYear1 / monthlyFullValue)
+    }
+  }
   const breakEven = breakEvenMonths
     ? breakEvenMonths <= 36
       ? `Month ${breakEvenMonths}`

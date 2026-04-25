@@ -78,8 +78,8 @@ function AssumptionsCard() {
         </div>
 
         <div className="calc-item">
-          <span className="calc-label">Break-even</span>
-          <span className="calc-formula">Total year 1 investment ÷ Monthly value generated. Reflects the month at which cumulative value recovered exceeds total investment.</span>
+          <span className="calc-label">Break-even month</span>
+          <span className="calc-formula">Uses ramped Year 1 monthly value to find the month cumulative value covers total Year 1 investment. If Year 1 value alone doesn't cover the investment, the remaining balance is paid off in Year 2 at full monthly value.</span>
         </div>
       </div>
     </div>
