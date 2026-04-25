@@ -1,49 +1,80 @@
 function ComparisonCard({ without, withPS, packageName, packageId }) {
   return (
     <div className="card comparison">
-      <h2>With vs. Without Professional Services</h2>
-      <p className="comparison-pkg">PS Package: <strong>{packageName}</strong></p>
+      <div className="comparison-header">
+        <h2>With vs. Without Professional Services</h2>
+        <span className="comparison-pkg">{packageName}</span>
+      </div>
 
-      <div className="comparison-grid">
-        <div className="col-header"></div>
-        <div className="col-header without">Without PS</div>
-        <div className="col-header with">With PS</div>
-
-        <div className="row-label">Effective adoption rate</div>
-        <div className="col-val without">{without.adoptionPct}%</div>
-        <div className="col-val with">{withPS.adoptionPct}%</div>
-
-        <div className="row-label">Year 1 value generated <sup>1</sup></div>
-        <div className="col-val without">${without.year1Value.toLocaleString()}</div>
-        <div className="col-val with">${withPS.year1Value.toLocaleString()}</div>
-
-        <div className="row-label">Year 1 total investment <sup>2</sup></div>
-        <div className="col-val without">${without.year1Investment.toLocaleString()}</div>
-        <div className="col-val with">${withPS.year1Investment.toLocaleString()}</div>
-
-        <div className="row-label">Year 1 net return <sup>3</sup></div>
-        <div className={`col-val without ${without.year1Net < 0 ? 'negative' : 'positive'}`}>
-          {without.year1Net < 0 ? '-' : '+'}${Math.abs(without.year1Net).toLocaleString()}
-        </div>
-        <div className={`col-val with ${withPS.year1Net < 0 ? 'negative' : 'positive'}`}>
-          {withPS.year1Net < 0 ? '-' : '+'}${Math.abs(withPS.year1Net).toLocaleString()}
+      <div className="comparison-table">
+        <div className="ct-head">
+          <div className="ct-label-col"></div>
+          <div className="ct-val-col without-col">Without PS</div>
+          <div className="ct-val-col with-col">With PS</div>
         </div>
 
-        <div className="row-label">3-year net return <sup>4</sup></div>
-        <div className={`col-val without ${without.threeYearNet < 0 ? 'negative' : 'positive'}`}>
-          {without.threeYearNet < 0 ? '-' : '+'}${Math.abs(without.threeYearNet).toLocaleString()}
-        </div>
-        <div className={`col-val with ${withPS.threeYearNet < 0 ? 'negative' : 'positive'}`}>
-          {withPS.threeYearNet < 0 ? '-' : '+'}${Math.abs(withPS.threeYearNet).toLocaleString()}
+        <div className="ct-group">
+          <div className="ct-group-label">Assumptions</div>
+          <div className="ct-row">
+            <div className="ct-label">Effective adoption rate</div>
+            <div className="ct-val without-col">{without.adoptionPct}%</div>
+            <div className="ct-val with-col">{withPS.adoptionPct}%</div>
+          </div>
         </div>
 
-        <div className="row-label">Break-even</div>
-        <div className="col-val without">{without.breakEven}</div>
-        <div className="col-val with">{withPS.breakEven}</div>
+        <div className="ct-group">
+          <div className="ct-group-label">Year 1</div>
+          <div className="ct-row">
+            <div className="ct-label">
+              Total investment
+              <span className="ct-sublabel">License + PS fee (PS is one-time)</span>
+            </div>
+            <div className="ct-val without-col">${without.year1Investment.toLocaleString()}</div>
+            <div className="ct-val with-col">${withPS.year1Investment.toLocaleString()}</div>
+          </div>
+          <div className="ct-row">
+            <div className="ct-label">
+              Value generated
+              <span className="ct-sublabel">Time recaptured × adoption × productivity capture × ramp</span>
+            </div>
+            <div className="ct-val without-col">${without.year1Value.toLocaleString()}</div>
+            <div className="ct-val with-col">${withPS.year1Value.toLocaleString()}</div>
+          </div>
+          <div className="ct-row ct-row-net">
+            <div className="ct-label">Net return</div>
+            <div className={`ct-val without-col ${without.year1Net < 0 ? 'negative' : 'positive'}`}>
+              {without.year1Net < 0 ? '−' : '+'}${Math.abs(without.year1Net).toLocaleString()}
+            </div>
+            <div className={`ct-val with-col ${withPS.year1Net < 0 ? 'negative' : 'positive'}`}>
+              {withPS.year1Net < 0 ? '−' : '+'}${Math.abs(withPS.year1Net).toLocaleString()}
+            </div>
+          </div>
+        </div>
+
+        <div className="ct-group">
+          <div className="ct-group-label">3-Year Summary</div>
+          <div className="ct-row ct-row-net">
+            <div className="ct-label">
+              Cumulative net return
+              <span className="ct-sublabel">Years 2–3 use license cost only; PS fee is year 1 only</span>
+            </div>
+            <div className={`ct-val without-col ${without.threeYearNet < 0 ? 'negative' : 'positive'}`}>
+              {without.threeYearNet < 0 ? '−' : '+'}${Math.abs(without.threeYearNet).toLocaleString()}
+            </div>
+            <div className={`ct-val with-col ${withPS.threeYearNet < 0 ? 'negative' : 'positive'}`}>
+              {withPS.threeYearNet < 0 ? '−' : '+'}${Math.abs(withPS.threeYearNet).toLocaleString()}
+            </div>
+          </div>
+          <div className="ct-row">
+            <div className="ct-label">Break-even</div>
+            <div className="ct-val without-col">{without.breakEven}</div>
+            <div className="ct-val with-col">{withPS.breakEven}</div>
+          </div>
+        </div>
       </div>
 
       <div className="insight">
-        Over 3 years, proper implementation generates{' '}
+        Over 3 years, PS-guided implementation generates{' '}
         <strong>${(withPS.threeYearNet - without.threeYearNet).toLocaleString()}</strong>{' '}
         more value than an unguided rollout.
       </div>
@@ -64,13 +95,6 @@ function ComparisonCard({ without, withPS, packageName, packageId }) {
           and are not reflected in the numbers above.
         </div>
       )}
-
-      <div className="legend">
-        <div className="legend-item"><sup>1</sup> Dollar value of employee time recaptured by AI, adjusted for adoption rate, productivity capture, and ramp-up speed.</div>
-        <div className="legend-item"><sup>2</sup> Annual AI license cost plus PS package fee (PS is a one-time cost; license recurs annually).</div>
-        <div className="legend-item"><sup>3</sup> Value generated minus total investment. Negative in year 1 is normal when PS cost is included.</div>
-        <div className="legend-item"><sup>4</sup> Cumulative net return across years 1, 2, and 3. Years 2 and 3 exclude the one-time PS cost, using annual license cost only.</div>
-      </div>
     </div>
   )
 }
