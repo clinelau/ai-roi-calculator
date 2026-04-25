@@ -4,18 +4,21 @@ export const PS_PACKAGES = [
     name: 'Agentic Foundation',
     cost: 1_600_000,
     tagline: 'Governed AI foundation',
+    profile: 'Right for you if: Your leadership wants to move but your org isn\'t ready to mobilize at scale. You need to prove value and establish a governed, repeatable development engine before expanding.',
   },
   {
     id: 'acceleration',
     name: 'Agentic Acceleration',
     cost: 2_700_000,
     tagline: 'Scaled AI adoption',
+    profile: 'Right for you if: You\'ve piloted something but adoption is stalling. Your employees need a structured program to shift their workflows, and your architecture needs to scale beyond the pilot.',
   },
   {
     id: 'transformation',
     name: 'Agentic Transformation',
     cost: 3_700_000,
     tagline: 'Enterprise-wide AI',
+    profile: 'Right for you if: Your C-suite is committed to a full operating model rewrite — shifting the entire enterprise from clicks to conversations. The question isn\'t whether, it\'s how fast.',
   },
 ]
 

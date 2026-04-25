@@ -48,6 +48,13 @@ function ComparisonCard({ without, withPS, packageName, packageId }) {
         more value than an unguided rollout.
       </div>
 
+      {packageId === 'foundation' && (
+        <div className="nudge-callout">
+          <strong>Is workforce adoption a concern?</strong>{' '}
+          Organizations with resistant or AI-apprehensive employee groups see the biggest lift from structured Change Management — included in Agentic Acceleration. Without it, adoption depends on organic uptake, which is the single largest variable in these projections.
+        </div>
+      )}
+
       {packageId === 'transformation' && (
         <div className="floor-callout">
           <strong>These figures represent a conservative floor for Agentic Transformation.</strong>{' '}

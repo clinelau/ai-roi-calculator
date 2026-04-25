@@ -62,6 +62,11 @@ function InputCard({ hourlyRate, setHourlyRate, hoursPerWeek, setHoursPerWeek, n
             </button>
           ))}
         </div>
+        {PS_PACKAGES.filter((pkg) => pkg.id === selectedPackage).map((pkg) => (
+          <div key={pkg.id} className="pkg-profile">
+            {pkg.profile}
+          </div>
+        ))}
       </div>
     </div>
   )
