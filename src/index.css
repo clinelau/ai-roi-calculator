@@ -1,18 +1,36 @@
-/* CSS variables — define our color palette and font in one place */
+/* Design tokens */
 :root {
-  --blue: #4f46e5;
-  --blue-dark: #4338ca;
-  --green: #059669;
-  --bg: #f8fafc;
+  --blue: #0176D3;
+  --blue-light: #e8f4fd;
+  --blue-dark: #014486;
+  --green: #2e7d32;
+  --green-light: #f0fdf4;
+  --yellow-light: #fffbeb;
+  --red: #c62828;
+  --bg: #f4f6f9;
   --card-bg: #ffffff;
-  --text: #1e293b;
-  --text-muted: #64748b;
-  --border: #e2e8f0;
-  --shadow: 0 4px 6px -1px rgba(0,0,0,0.07), 0 2px 4px -1px rgba(0,0,0,0.04);
+  --text: #181818;
+  --text-muted: #5a6872;
+  --text-light: #8a9bb0;
+  --border: #dde2e8;
+  --border-light: #eef1f4;
+  --shadow: 0 2px 8px rgba(0,0,0,0.07), 0 1px 2px rgba(0,0,0,0.04);
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --font: 'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono: 'SF Mono', 'Fira Code', 'Cascadia Code', monospace;
+
+  /* Spacing scale */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
 }
 
-/* Reset browser defaults — every browser adds its own margins/padding by
-   default, which causes inconsistent layouts. We zero them out here. */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -20,9 +38,15 @@
 }
 
 body {
-  font-family: system-ui, 'Segoe UI', Roboto, sans-serif;
+  font-family: var(--font);
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
   min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Inputs inherit font so they match surrounding text */
+input, button, select, textarea {
+  font-family: inherit;
 }

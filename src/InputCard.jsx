@@ -1,5 +1,16 @@
 import { PS_PACKAGES } from './constants'
 
+function formatWithCommas(value) {
+  if (value === '' || value === null || value === undefined) return ''
+  const num = Number(String(value).replace(/,/g, ''))
+  if (isNaN(num)) return value
+  return num.toLocaleString()
+}
+
+function stripCommas(value) {
+  return value.replace(/,/g, '')
+}
+
 function InputCard({ hourlyRate, setHourlyRate, hoursPerWeek, setHoursPerWeek, numEmployees, setNumEmployees, annualLicenseCost, setAnnualLicenseCost, selectedPackage, setSelectedPackage }) {
   return (
     <div className="card">
@@ -8,10 +19,11 @@ function InputCard({ hourlyRate, setHourlyRate, hoursPerWeek, setHoursPerWeek, n
       <label>
         Number of employees using AI
         <input
-          type="number"
-          value={numEmployees}
-          onChange={(e) => setNumEmployees(e.target.value)}
-          placeholder="e.g. 100"
+          type="text"
+          inputMode="numeric"
+          value={formatWithCommas(numEmployees)}
+          onChange={(e) => setNumEmployees(stripCommas(e.target.value))}
+          placeholder="e.g. 1,000"
         />
       </label>
 
@@ -39,10 +51,11 @@ function InputCard({ hourlyRate, setHourlyRate, hoursPerWeek, setHoursPerWeek, n
       <label>
         Annual AI product license cost ($)
         <input
-          type="number"
-          value={annualLicenseCost}
-          onChange={(e) => setAnnualLicenseCost(e.target.value)}
-          placeholder="e.g. 500000"
+          type="text"
+          inputMode="numeric"
+          value={formatWithCommas(annualLicenseCost)}
+          onChange={(e) => setAnnualLicenseCost(stripCommas(e.target.value))}
+          placeholder="e.g. 500,000"
         />
       </label>
 
