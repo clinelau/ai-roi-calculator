@@ -3,7 +3,7 @@ import InputCard from './InputCard'
 import ComparisonCard from './ComparisonCard'
 import AssumptionsCard from './AssumptionsCard'
 import AstroConnector from './AstroConnector'
-import { PS_PACKAGES, WITHOUT_PS, WITH_PS } from './constants'
+import { PS_PACKAGES, WITHOUT_PS, PACKAGE_ASSUMPTIONS } from './constants'
 import './App.css'
 
 function calcScenario(hourlyRate, hoursPerWeek, numEmployees, annualLicenseCost, psCost, assumptions) {
@@ -57,7 +57,7 @@ function App() {
     : null
 
   const withResults = hasInputs
-    ? calcScenario(Number(hourlyRate), Number(hoursPerWeek), Number(numEmployees), Number(annualLicenseCost), psCost, WITH_PS)
+    ? calcScenario(Number(hourlyRate), Number(hoursPerWeek), Number(numEmployees), Number(annualLicenseCost), psCost, PACKAGE_ASSUMPTIONS[selectedPackage])
     : null
 
   return (
@@ -97,6 +97,7 @@ function App() {
               without={withoutResults}
               withPS={withResults}
               packageName={pkg.name}
+              packageId={selectedPackage}
             />
           ) : (
             <div className="empty-state">

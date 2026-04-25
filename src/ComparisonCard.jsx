@@ -1,4 +1,4 @@
-function ComparisonCard({ without, withPS, packageName }) {
+function ComparisonCard({ without, withPS, packageName, packageId }) {
   return (
     <div className="card comparison">
       <h2>With vs. Without Professional Services</h2>
@@ -47,6 +47,16 @@ function ComparisonCard({ without, withPS, packageName }) {
         <strong>${(withPS.threeYearNet - without.threeYearNet).toLocaleString()}</strong>{' '}
         more value than an unguided rollout.
       </div>
+
+      {packageId === 'transformation' && (
+        <div className="floor-callout">
+          <strong>These figures represent a conservative floor for Agentic Transformation.</strong>{' '}
+          The Innovation Lab and Experience Design outcomes expand the addressable scope of automation —
+          redesigning workflows from clicks to conversations and enabling the customer to independently
+          conceive and launch new agents. Those gains compound beyond what fixed multipliers can model
+          and are not reflected in the numbers above.
+        </div>
+      )}
 
       <div className="legend">
         <div className="legend-item"><sup>1</sup> Dollar value of employee time recaptured by AI, adjusted for adoption rate, productivity capture, and ramp-up speed.</div>

@@ -1,4 +1,4 @@
-import { WITHOUT_PS, WITH_PS, SOURCES } from './constants'
+import { WITHOUT_PS, PACKAGE_ASSUMPTIONS, SOURCES } from './constants'
 
 function AssumptionsCard() {
   return (
@@ -14,24 +14,32 @@ function AssumptionsCard() {
           <tr>
             <th>Assumption</th>
             <th>Without PS</th>
-            <th>With PS</th>
+            <th>Foundation</th>
+            <th>Acceleration</th>
+            <th>Transformation</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>Effective adoption rate</td>
             <td>{WITHOUT_PS.adoptionRate * 100}%</td>
-            <td>{WITH_PS.adoptionRate * 100}%</td>
+            <td>{PACKAGE_ASSUMPTIONS.foundation.adoptionRate * 100}%</td>
+            <td>{PACKAGE_ASSUMPTIONS.acceleration.adoptionRate * 100}%</td>
+            <td>{PACKAGE_ASSUMPTIONS.transformation.adoptionRate * 100}%</td>
           </tr>
           <tr>
             <td>Productivity capture rate</td>
             <td>{WITHOUT_PS.productivityCapture * 100}%</td>
-            <td>{WITH_PS.productivityCapture * 100}%</td>
+            <td>{PACKAGE_ASSUMPTIONS.foundation.productivityCapture * 100}%</td>
+            <td>{PACKAGE_ASSUMPTIONS.acceleration.productivityCapture * 100}%</td>
+            <td>{PACKAGE_ASSUMPTIONS.transformation.productivityCapture * 100}%</td>
           </tr>
           <tr>
             <td>Year 1 ramp factor</td>
             <td>{WITHOUT_PS.year1RampFactor * 100}%</td>
-            <td>{WITH_PS.year1RampFactor * 100}%</td>
+            <td>{PACKAGE_ASSUMPTIONS.foundation.year1RampFactor * 100}%</td>
+            <td>{PACKAGE_ASSUMPTIONS.acceleration.year1RampFactor * 100}%</td>
+            <td>{PACKAGE_ASSUMPTIONS.transformation.year1RampFactor * 100}%</td>
           </tr>
         </tbody>
       </table>

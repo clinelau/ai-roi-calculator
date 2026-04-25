@@ -3,7 +3,7 @@ export const PS_PACKAGES = [
     id: 'foundation',
     name: 'Agentic Foundation',
     cost: 1_600_000,
-    tagline: 'Baseline AI implementation',
+    tagline: 'Governed AI foundation',
   },
   {
     id: 'acceleration',
@@ -26,11 +26,33 @@ export const WITHOUT_PS = {
   year1RampFactor: 0.25,
 }
 
-// Assumptions for an implementation with Salesforce Professional Services
-export const WITH_PS = {
-  adoptionRate: 0.82,
-  productivityCapture: 0.75,
-  year1RampFactor: 0.80,
+// Per-package assumptions grounded in each tier's scope of services
+export const PACKAGE_ASSUMPTIONS = {
+  // Foundation: AI & Data Governance + repeatable agent development engine drives
+  // consistency and trust, lifting productivity capture and adoption — but without
+  // Change Management, workforce enablement is organic rather than structured.
+  foundation: {
+    adoptionRate: 0.68,
+    productivityCapture: 0.70,
+    year1RampFactor: 0.60,
+  },
+  // Acceleration: adds Change Management (the primary adoption driver per Prosci) and
+  // Architecture & Scalability — justified by the existing McKinsey/Prosci benchmarks.
+  acceleration: {
+    adoptionRate: 0.82,
+    productivityCapture: 0.75,
+    year1RampFactor: 0.80,
+  },
+  // Transformation: adds Experience Design (workflows redesigned from clicks to
+  // conversations, capturing higher-value work) and heavier upfront strategic investment
+  // driving faster Year 1 readiness. Note: 3-year return is a conservative floor —
+  // Innovation Lab and Experience Design expand the addressable scope of automation
+  // beyond what fixed multipliers can model.
+  transformation: {
+    adoptionRate: 0.90,
+    productivityCapture: 0.88,
+    year1RampFactor: 0.88,
+  },
 }
 
 export const SOURCES = [
@@ -46,12 +68,12 @@ export const SOURCES = [
   },
   {
     id: 3,
-    claim: '82% effective adoption with structured PS reflects high-CM project outcomes',
+    claim: 'Acceleration (82% adoption) reflects structured Change Management maturity; Foundation (68%) reflects governance-led trust without formal workforce enablement; Transformation (90%) reflects full organizational readiness and enterprise governance',
     citation: 'Derived from Prosci PCT Model research — high change management maturity benchmarks',
   },
   {
     id: 4,
-    claim: 'Productivity capture rates (50% vs 75%) reflect time recapture efficiency with/without structured rollout',
+    claim: 'Productivity capture reflects implementation quality: Foundation governance (70%) ensures consistent agent quality; Acceleration structured rollout (75%); Transformation Experience Design (88%) redesigns workflows from clicks to conversations, capturing higher-value work',
     citation: 'McKinsey, "The economic potential of generative AI," 2023',
   },
 ]
