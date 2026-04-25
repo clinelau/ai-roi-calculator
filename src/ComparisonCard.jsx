@@ -77,9 +77,9 @@ function ComparisonCard({ without, withPS, packageName, packageId }) {
       </div>
 
       <div className="insight">
-        Over 3 years, PS-guided implementation generates{' '}
+        Over 3 years, PS-guided implementation produces{' '}
         <strong>${(withPS.threeYearNet - without.threeYearNet).toLocaleString()}</strong>{' '}
-        more value than an unguided rollout.
+        more net return than an unguided rollout — after all costs, including the PS investment.
       </div>
 
       {packageId === 'foundation' && (
